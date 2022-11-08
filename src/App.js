@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import React, { Component } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Home from "./views/Home";
+import Nav from "./components/Nav";
+
+function NoMatch() {
+  return <h2>Ooops!</h2>;
+}
+
+export const JobContext = React.createContext();
+
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div className="bg-slate-300 h-auto pb-5">
+          <Nav />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              {/* <Route path="/people" element={<People />} /> */}
+              {/* <Route path="/starship" element={<Starship />} />
+              <Route path="/planet" element={<Planet />} /> */}
+              <Route path="400" element={<NoMatch />} />
+            </Routes>
+          </main>
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
