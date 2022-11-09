@@ -80,3 +80,5 @@ export default function Card() {
     </div>
   );
 }
+
+//by fauzi dzulfiqar wibowo
